@@ -1,14 +1,31 @@
 <template>
-    <ul>
-        <li><input type="text" v-model="edition.style" placeholder="Style"/></li>
-        <li><input type="text" v-model="edition.division" placeholder="Division"/></li>
-        <li>
-            <a v-on:click="save"> save </a>
-        </li>
-    </ul>
+    <div class="md-layout md-gutter">
+        <div class="md-layout-item">
+            <md-field>
+                <label>Division</label>
+                <md-input type="text" v-model="edition.style" placeholder="Style">
+                </md-input>
+            </md-field>
+        </div>
+        <div class="md-layout-item">
+            <md-field>
+                <label>Division</label>
+                <md-input type="text" v-model="edition.division" placeholder="Division"/>
+                </md-input>
+            </md-field>
+        </div>
+        <div class="md-layout-item">
+            <md-button v-on:click="save"> save </md-button>
+        </div>
+    </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { MdButton, MdField } from 'vue-material/dist/components'
+import MdInput from 'vue-material/dist/components/MdChips'
+
+
 export default {
   name: 'CategoriesListRowEdit',
   props: {

@@ -1,22 +1,21 @@
 <template >
-    <li>
-      <template v-if="!editing">
-        {{item.style}} {{item.division}}<a v-on:click="edit">edit </a>
-      </template>
-      <template v-else>
-          <CategoriesListRowEdit :target="item"/>
-      </template>
-    </li>
+    <div class="md-layout-item md-layout md-gutter">
+      <CategoriesListRowShow v-if="!editing" :target="item"/>
+      <CategoriesListRowEdit v-else :target="item"/>
+    </div>
 </template>
 <script>
+import Vue from 'vue'
+import { MdButton, MdField } from 'vue-material/dist/components'
 import CategoriesListRowEdit from './categories-list-row-edit.vue'
+import CategoriesListRowShow from './categories-list-row-show.vue'
 
 export default {
   name: 'CategoriesListRow',
   props: {
     item: Object
   },
-  components: {CategoriesListRowEdit},
+  components: {CategoriesListRowShow, CategoriesListRowEdit},
   data(){ 
     return {
       editing: false

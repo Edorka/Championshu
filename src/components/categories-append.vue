@@ -1,21 +1,21 @@
 <template>
     <div class="md-layout md-gutter">
       <div class="md-layout-item md-small-size-100">
-            <md-field>
-                <label>Style</label>
-                <md-input v-model="style" placeholder="ChangQuan, NanQuan, ...">
-                </md-input>
-            </md-field>
+        <md-field>
+            <label>Style</label>
+            <md-input v-model="style" placeholder="ChangQuan, NanQuan, ...">
+            </md-input>
+        </md-field>
       </div>
       <div class="md-layout-item md-small-size-100">
-            <md-field>
-                <label>Division</label>
-                <md-input v-model="division" placeholder="Male, Female, Jr, ...">
-                </md-input>
-            </md-field>
+        <md-field>
+            <label>Division</label>
+            <md-input v-model="division" placeholder="Male, Female, Jr, ...">
+            </md-input>
+        </md-field>
       </div>
       <div class="md-layout-item md-small-size-100">
-            <md-button class="md-primary" id="submit" v-on:click="append" :disabled=notValid> add </md-button>
+        <md-button class="md-primary" id="submit" v-on:click="append" :disabled=notValid> add </md-button>
       </div>
     </div>
 </template>

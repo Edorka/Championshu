@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <CategoriesList :items="categories"/>
-    <CategoriesAppend :target="categories"/>
+      <CategoriesList :items="categories"/>
+      <CategoriesAppend :target="categories"/>
   </div>
 </template>
 
@@ -34,5 +34,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  padding: 1.5em .5em;
 }
 </style>
