@@ -6,6 +6,9 @@
 </template>
 
 <script>
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css' // This line here
+
 import CategoriesList from './components/categories-list.vue'
 import CategoriesAppend from './components/categories-append.vue'
 
@@ -28,11 +31,8 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
