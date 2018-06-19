@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <CategoriesList :items="categories"/>
+    <CategoriesAppend :target="categories"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CategoriesList from './components/categories-list.vue'
+import CategoriesAppend from './components/categories-append.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    CategoriesList,
+    CategoriesAppend
+  },
+  data() {return {
+    categories: [
+        {'id': 1,'style':'Chang Quan','division':'Sr. Male'},
+        {'id': 2,'style':'Chang Quan','division':'Sr. Female'},
+        {'id': 3,'style':'Chang Quan','division':'Jr. Mixed'},
+    ]
+  }
   }
 }
 </script>
