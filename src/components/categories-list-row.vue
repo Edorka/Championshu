@@ -1,6 +1,10 @@
 <template >
-    <div class="md-layout-item md-layout md-gutter">
-      <CategoriesListRowShow v-if="!editing" :target="item"/>
+    <div class="md-layout-item md-layout md-gutter"
+        >
+      <CategoriesListRowShow v-if="!editing" :target="item"
+        v-on:edition="editing = true" 
+      />
+
       <CategoriesListRowEdit v-else :target="item"/>
     </div>
 </template>
@@ -20,11 +24,6 @@ export default {
     return {
       editing: false
     };
-  },
-  methods: {
-    edit() {
-        this.editing = true;
-    }
   }
 }
 </script>

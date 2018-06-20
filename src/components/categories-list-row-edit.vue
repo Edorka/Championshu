@@ -40,9 +40,7 @@ export default {
     save: function() {
         //this.target.push(this.edition);
         Object.assign(this.target, this.edition)
-        this.editing = false;
-        console.log('new', this.edition);
-
+        this.target.editing = false;
     }      
   }
 }

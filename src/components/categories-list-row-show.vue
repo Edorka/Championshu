@@ -26,7 +26,8 @@ export default {
   },
   methods: {
     edit() {
-        this.editing = true;
+        this.$emit('edition');
+        console.log('edition target', this.target);
     }      
   }
 }
