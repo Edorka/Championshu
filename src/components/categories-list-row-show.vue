@@ -1,12 +1,12 @@
 <template>
     <div class="md-layout md-gutter">
-        <div class="md-layout-item md-alignment-center-center">
-            <md-content>{{target.style}}</md-content>
-        </div>
-        <div class="md-layout-item md-alignment-center-center">
-            <md-content>{{target.division}}</md-content>
+        <div class="md-layout-item">
+            <span>{{target.style}}</span>
         </div>
         <div class="md-layout-item">
+            <span>{{target.division}}</span>
+        </div>
+        <div class="md-layout-item md-size-15">
             <md-button v-on:click="edit">edit </md-button>
         </div>
     </div>
@@ -34,10 +34,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-    .md-content {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+<style lang="scss" scoped>
+    .md-layout-item {
+        text-align: left;
+        vertical-align: middle;
     }
+    .md-layout-item span{
+        margin-top: 1em;
+    }
+    
 </style>

@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-      <CategoriesList :items="categories"/>
-      <CategoriesAppend :target="categories"/>
+      <div class="categories-list">
+        <h1>Categories</h1>
+        <CategoriesList :items="categories"/>
+        <CategoriesAppend :target="categories"/>
+      </div>
   </div>
 </template>
 
@@ -11,6 +14,7 @@ import 'vue-material/dist/theme/default.css' // This line here
 
 import CategoriesList from './components/categories-list.vue'
 import CategoriesAppend from './components/categories-append.vue'
+
 
 export default {
   name: 'app',
@@ -34,6 +38,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  padding: 1.5em .5em;
+  padding: .5em 2.5em;
 }
 </style>

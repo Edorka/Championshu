@@ -1,22 +1,25 @@
 <template>
     <div class="md-layout md-gutter">
-      <div class="md-layout-item md-small-size-100">
-        <md-field>
-            <label>Style</label>
-            <md-input v-model="style" placeholder="ChangQuan, NanQuan, ...">
-            </md-input>
-        </md-field>
-      </div>
-      <div class="md-layout-item md-small-size-100">
-        <md-field>
-            <label>Division</label>
-            <md-input v-model="division" placeholder="Male, Female, Jr, ...">
-            </md-input>
-        </md-field>
-      </div>
-      <div class="md-layout-item md-small-size-100">
-        <md-button class="md-primary" id="submit" v-on:click="append" :disabled=notValid> add </md-button>
-      </div>
+        <div class="md-layout-item">
+            <md-field>
+                <label>Division</label>
+                <md-input type="text" v-model="style" placeholder="Style">
+                </md-input>
+            </md-field>
+        </div>
+        <div class="md-layout-item">
+            <md-field>
+                <label>Division</label>
+                <md-input type="text" v-model="division" placeholder="Division"/>
+                </md-input>
+            </md-field>
+        </div>
+        <div class="md-layout-item md-size-15">
+            <md-button class="md-primary" id="submit" 
+                v-on:click="append" :disabled=notValid>
+                add
+            </md-button>
+        </div>
     </div>
 </template>
 
@@ -76,15 +79,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+    .md-layout-item {
+        text-align: left;
+        vertical-align: middle;
+    }
 </style>

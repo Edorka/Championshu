@@ -14,7 +14,7 @@
                 </md-input>
             </md-field>
         </div>
-        <div class="md-layout-item">
+        <div class="md-layout-item md-size-15">
             <md-button v-on:click="save"> save </md-button>
         </div>
     </div>
@@ -40,7 +40,7 @@ export default {
     save: function() {
         //this.target.push(this.edition);
         Object.assign(this.target, this.edition)
-        this.target.editing = false;
+        this.$emit('saved');
     }      
   }
 }
@@ -48,18 +48,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+    .md-layout-item {
+        text-align: left;
+        vertical-align: middle;
+    }
 </style>

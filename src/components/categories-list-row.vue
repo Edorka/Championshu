@@ -1,16 +1,10 @@
 <template >
-    <div class="md-layout-item md-layout md-gutter"
-        >
-      <CategoriesListRowShow v-if="!editing" :target="item"
-        v-on:edition="editing = true" 
-      />
-
-      <CategoriesListRowEdit v-else :target="item"/>
+    <div class="md-layout-item md-layout md-gutter">
+      <CategoriesListRowShow v-if="!editing" :target="item" v-on:edition="editing=true" />
+      <CategoriesListRowEdit v-else :target="item" v-on:saved="editing=false"/>
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import { MdButton, MdField } from 'vue-material/dist/components'
 import CategoriesListRowEdit from './categories-list-row-edit.vue'
 import CategoriesListRowShow from './categories-list-row-show.vue'
 
@@ -24,6 +18,11 @@ export default {
     return {
       editing: false
     };
+  },
+  methods: {
+    edit() {
+        this.editing = true;
+    }
   }
 }
 </script>
