@@ -1,10 +1,10 @@
 <template>
     <div class="md-layout md-gutter">
         <div class="md-layout-item">
-            <span>{{target.style}}</span>
+            <div class="field">{{target.style}}</div>
         </div>
         <div class="md-layout-item">
-            <span>{{target.division}}</span>
+            <div class="field">{{target.division}}</div>
         </div>
         <div class="md-layout-item md-size-15">
             <md-button v-on:click="edit">edit </md-button>
@@ -39,7 +39,7 @@ export default {
         text-align: left;
         vertical-align: middle;
     }
-    .md-layout-item span{
+    .md-layout-item .field{
         margin-top: 1em;
     }
     

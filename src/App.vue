@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+      <h1>{{ encounter.name }}</h1>
       <div class="categories-list">
-        <h1>Categories</h1>
+        <h2>Categories</h2>
         <CategoriesList :items="categories"/>
         <CategoriesAppend :target="categories"/>
       </div>
@@ -12,6 +13,7 @@
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css' // This line here
 
+import { mapState } from 'vuex'
 import CategoriesList from './components/categories-list.vue'
 import CategoriesAppend from './components/categories-append.vue'
 
@@ -22,14 +24,7 @@ export default {
     CategoriesList,
     CategoriesAppend
   },
-  data() {return {
-    categories: [
-        {'id': 1,'style':'Chang Quan','division':'Sr. Male'},
-        {'id': 2,'style':'Chang Quan','division':'Sr. Female'},
-        {'id': 3,'style':'Chang Quan','division':'Jr. Mixed'},
-    ]
-  }
-  }
+  computed: mapState(['encounter', 'categories']),
 }
 </script>
 
