@@ -1,5 +1,5 @@
 <template>
-    <div class="md-layout md-gutter">
+    <md-content class="md-elevation-2 md-layout-item md-layout md-gutter md-alignment-center-center">
         <div class="md-layout-item">
             <md-field>
                 <label>Division</label>
@@ -15,12 +15,13 @@
             </md-field>
         </div>
         <div class="md-layout-item md-size-15">
-            <md-button class="md-icon-button" id="submit" 
+            <md-button class="md-button" id="submit" 
                 v-on:click="append" :disabled=notValid >
                 <md-icon>add_circle</md-icon>
+                APPEND
             </md-button>
         </div>
-    </div>
+    </md-content>
 </template>
 
 <script>
@@ -35,7 +36,6 @@ Vue.use(MdInput)
 export default {
   name: 'CategoriesAppend',
   props: {
-    target: Array
   },
   data() {
     return{
@@ -47,15 +47,10 @@ export default {
   methods: {
     ...mapActions(['addCategory']),
     append() {
-        console.log('try', this.valid() );
         if ( this.valid() !== true ) { return false; }
-        const id = this.target.length + 1;
-        const style = this.style;
-        const division = this.division;
         this.addCategory({
-            id,
-            style,
-            division
+            style: this.style,
+            division: this.division
         });
         this.style = '';
         this.division = '';
@@ -81,8 +76,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .md-layout-item {
-        text-align: left;
-        vertical-align: middle;
-    }
+
+.md-layout-item {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.md-content {
+  margin: 10px 15px;
+  padding: 5px 15px;
+}
 </style>

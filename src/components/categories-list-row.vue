@@ -1,8 +1,8 @@
 <template >
-    <div class="md-layout-item md-layout md-gutter">
+    <md-content class="md-elevation-7 md-layout-item md-layout md-gutter">
       <CategoriesListRowShow v-if="!editing" :target="item" v-on:edition="editing=true" />
       <CategoriesListRowEdit v-else :target="item" v-on:saved="editing=false"/>
-    </div>
+    </md-content>
 </template>
 <script>
 import CategoriesListRowEdit from './categories-list-row-edit.vue'
@@ -30,7 +30,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-li {
+.md-content {
   margin: 10px 15px;
+  padding: 5px 15px;
 }
 </style>

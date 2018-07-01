@@ -1,5 +1,5 @@
 <template>
-    <div class="md-layout md-gutter">
+    <div class="md-layout md-gutter md-alignment-center-center">
         <div class="md-layout-item">
             <div class="field">{{target.style}}</div>
         </div>
@@ -51,7 +51,6 @@ export default {
         vertical-align: middle;
     }
     .md-layout-item .field{
-        margin-top: 18px;
     }
     .buttons button{
         display: inline-block;
