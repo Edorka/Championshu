@@ -15,9 +15,9 @@
             </md-field>
         </div>
         <div class="md-layout-item md-size-15">
-            <md-button class="md-primary" id="submit" 
-                v-on:click="append" :disabled=notValid>
-                add
+            <md-button class="md-icon-button" id="submit" 
+                v-on:click="append" :disabled=notValid >
+                <md-icon>add_circle</md-icon>
             </md-button>
         </div>
     </div>
@@ -27,6 +27,7 @@
 import Vue from 'vue'
 import { MdButton, MdField } from 'vue-material/dist/components'
 import MdInput from 'vue-material/dist/components/MdChips'
+import { mapActions } from 'vuex'
 
 Vue.use(MdButton)
 Vue.use(MdField)
@@ -44,13 +45,14 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['addCategory']),
     append() {
         console.log('try', this.valid() );
         if ( this.valid() !== true ) { return false; }
         const id = this.target.length + 1;
         const style = this.style;
         const division = this.division;
-        this.target.push({
+        this.addCategory({
             id,
             style,
             division

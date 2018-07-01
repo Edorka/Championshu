@@ -15,7 +15,9 @@
             </md-field>
         </div>
         <div class="md-layout-item md-size-15">
-            <md-button v-on:click="save"> save </md-button>
+            <md-button class="md-icon-button" v-on:click="save">
+                <md-icon>save_alt</md-icon>
+            </md-button>
         </div>
     </div>
 </template>
@@ -24,6 +26,7 @@
 import Vue from 'vue'
 import { MdButton, MdField } from 'vue-material/dist/components'
 import MdInput from 'vue-material/dist/components/MdChips'
+import { mapActions } from 'vuex'
 
 
 export default {
@@ -32,14 +35,14 @@ export default {
     target: Object
   },
   data() {
-    return{
+    return {
         edition: Object.assign({}, this.target)
     }
   },
   methods: {
-    save: function() {
-        //this.target.push(this.edition);
-        Object.assign(this.target, this.edition)
+    ...mapActions(['updateCategory']),
+    save() {
+        this.updateCategory(this.edition);
         this.$emit('saved');
     }      
   }
