@@ -35,7 +35,6 @@ export default {
     ...mapActions(['removeCategory']),
     edit() {
         this.$emit('edition');
-        console.log('edition target', this.target);
     },
     remove() {
         this.removeCategory(this.target.id);

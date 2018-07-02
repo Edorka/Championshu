@@ -1,11 +1,10 @@
 <template>
   <div id="app">
       <h1>{{ encounter.name }}</h1>
-      <div class="categories-list">
-        <h2>Categories</h2>
-        <CategoriesList :items="categories"/>
-        <CategoriesAppend :target="categories"/>
-      </div>
+      <nav>
+         <router-link to="/categories">categories</router-link>
+      </nav>
+      <router-view></router-view>
   </div>
 </template>
 
@@ -14,17 +13,10 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css' // This line here
 
 import { mapState } from 'vuex'
-import CategoriesList from './components/categories-list.vue'
-import CategoriesAppend from './components/categories-append.vue'
-
 
 export default {
   name: 'app',
-  components: {
-    CategoriesList,
-    CategoriesAppend
-  },
-  computed: mapState(['encounter', 'categories']),
+  computed: mapState(['encounter']),
 }
 </script>
 

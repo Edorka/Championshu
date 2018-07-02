@@ -16,7 +16,6 @@ export default new Vuex.Store({
     },
     mutations: {
         ADD_CATEGORY: (state, category) => {
-
             category.id = state.categories.length + 1;
             category.competitors = [];
             state.categories.push(category);

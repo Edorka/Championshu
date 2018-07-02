@@ -10,7 +10,7 @@
         <div class="md-layout-item">
             <md-field>
                 <label>Division</label>
-                <md-input type="text" v-model="division" placeholder="Division"/>
+                <md-input type="text" v-model="division" placeholder="Division">
                 </md-input>
             </md-field>
         </div>
