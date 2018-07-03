@@ -33,6 +33,7 @@ import { mapActions } from 'vuex'
 Vue.use(MdButton)
 Vue.use(MdField)
 Vue.use(MdInput)
+
 export default {
   name: 'CategoriesAppend',
   props: {

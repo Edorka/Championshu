@@ -6,13 +6,17 @@
         <div class="md-layout-item">
             <div class="field">{{target.division}}</div>
         </div>
-        <div class="md-layout-item md-size-15 buttons">
+        <div class="md-layout-item md-size-25 buttons">
             <md-button class="md-icon-button" v-on:click="edit">
                 <md-icon>create</md-icon>
             </md-button>
             <md-button class="md-icon-button" v-on:click="remove">
                 <md-icon>remove_circle</md-icon>
             </md-button>
+            <router-link tag="md-button" class="md-icon-button"
+                :to="{ name: 'category-show', params: { id: 123 }}">
+                <md-icon>remove_circle</md-icon>
+            </router-link>
         </div>
     </div>
 </template>
@@ -49,7 +53,8 @@ export default {
         text-align: left;
         vertical-align: middle;
     }
-    .md-layout-item .field{
+    .buttons{
+        text-align: right;
     }
     .buttons button{
         display: inline-block;

@@ -14,6 +14,13 @@ export default new Vuex.Store({
             {'id': 3,'style':'Chang Quan','division':'Jr. Mixed'},
         ]
     },
+    getters: {
+        getCategory: (state) => (id) => {
+            id = parseInt(id);
+            console.log('id', id);
+            return state.categories.find( category => category.id === id)
+        }
+    },
     mutations: {
         ADD_CATEGORY: (state, category) => {
             category.id = state.categories.length + 1;
