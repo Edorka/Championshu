@@ -49,7 +49,7 @@ export default {
     valid() {
       this.errors = [];
       if ( !this.name ) {
-        this.errors.push('Competitor\s name can\'t be empty');
+        this.errors.push('Competitor\'s name can\'t be empty');
       }
       return this.errors.length === 0;
     }

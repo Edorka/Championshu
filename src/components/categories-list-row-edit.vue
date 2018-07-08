@@ -10,8 +10,7 @@
         <div class="md-layout-item">
             <md-field>
                 <label>Division</label>
-                <md-input type="text" v-model="edition.division" placeholder="Division"/>
-                </md-input>
+                <md-input type="text" v-model="edition.division" placeholder="Division" />
             </md-field>
         </div>
         <div class="md-layout-item md-size-15">
@@ -23,9 +22,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { MdButton, MdField } from 'vue-material/dist/components'
-import MdInput from 'vue-material/dist/components/MdChips'
 import { mapActions } from 'vuex'
 
 

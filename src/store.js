@@ -18,7 +18,6 @@ export default new Vuex.Store({
     getters: {
         getCategory: (state) => (id) => {
             id = parseInt(id);
-            console.log('searching id', id, state.categories );
             return state.categories.find( category => category.id === id)
         },
         getCompetitors: (state) => (id) => {

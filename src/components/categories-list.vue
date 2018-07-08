@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import CategoriesListRow from './categories-list-row.vue' 
 
 
