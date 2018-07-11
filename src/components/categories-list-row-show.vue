@@ -14,7 +14,7 @@
                 <md-icon>remove_circle</md-icon>
             </md-button>
             <router-link tag="md-button" class="md-icon-button"
-                :to="{ name: 'category-show', params: { id: 123 }}">
+                :to="{ name: 'category-show', params: { id: target.id }}">
                 <md-icon>person</md-icon>
             </router-link>
         </div>
