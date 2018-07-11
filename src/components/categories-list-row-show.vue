@@ -13,9 +13,17 @@
             <md-button class="md-icon-button" v-on:click="remove">
                 <md-icon>remove_circle</md-icon>
             </md-button>
-            <router-link tag="md-button" class="md-icon-button"
+            <md-badge v-if="inscriptions.length > 0" 
+                      class="md-primary md-square" 
+                      :md-content="inscriptions.length">
+                <router-link tag="md-button" class="md-icon-button"
+                    :to="{ name: 'category-show', params: { id: target.id }}">
+                    <md-icon>person</md-icon>
+                </router-link>
+            </md-badge>
+            <router-link v-else tag="md-button" class="md-icon-button"
                 :to="{ name: 'category-show', params: { id: target.id }}">
-                <md-icon>person</md-icon>
+                <md-icon>person_add</md-icon>
             </router-link>
         </div>
     </div>
@@ -23,17 +31,25 @@
 
 <script>
 import Vue from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { MdButton, MdIcon } from 'vue-material/dist/components'
 import { MdContent } from 'vue-material/dist/components'
+import { MdBadge } from 'vue-material/dist/components'
 Vue.use(MdButton);
 Vue.use(MdIcon);
 Vue.use(MdContent);
+Vue.use(MdBadge);
 
 export default {
   name: 'CategoriesListRowShow',
   props: {
     target: Object
+  },
+  computed: {
+    ...mapGetters(['getCompetitors']),
+    inscriptions() {
+      return this.getCompetitors(this.target.id)
+    }
   },
   methods: {
     ...mapActions(['removeCategory']),
