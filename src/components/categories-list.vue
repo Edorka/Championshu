@@ -6,21 +6,22 @@
 </template>
 
 <script>
-import CategoriesListRow from './categories-list-row.vue' 
-
+import CategoriesListRow from "./categories-list-row.vue";
 
 export default {
-  name: 'CategoriesList',
+  name: "CategoriesList",
   components: {
     CategoriesListRow
   },
   props: {
     items: Array
   },
-  data ()  { return {
-    item: {'name': 'test'}
-  }}
-}
+  data() {
+    return {
+      item: { name: "test" }
+    };
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

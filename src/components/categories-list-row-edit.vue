@@ -22,33 +22,32 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
+import { mapActions } from "vuex";
 
 export default {
-  name: 'CategoriesListRowEdit',
+  name: "CategoriesListRowEdit",
   props: {
     target: Object
   },
   data() {
     return {
-        edition: Object.assign({}, this.target)
-    }
+      edition: Object.assign({}, this.target)
+    };
   },
   methods: {
-    ...mapActions(['updateCategory']),
+    ...mapActions(["updateCategory"]),
     save() {
-        this.updateCategory(this.edition);
-        this.$emit('saved');
-    }      
+      this.updateCategory(this.edition);
+      this.$emit("saved");
+    }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .md-layout-item {
-        text-align: left;
-        vertical-align: middle;
-    }
+.md-layout-item {
+  text-align: left;
+  vertical-align: middle;
+}
 </style>

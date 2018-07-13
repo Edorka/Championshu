@@ -25,44 +25,45 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { MdButton, MdField } from 'vue-material/dist/components'
-import MdInput from 'vue-material/dist/components/MdChips'
-import { mapActions } from 'vuex'
+import Vue from "vue";
+import { MdButton, MdField } from "vue-material/dist/components";
+import MdInput from "vue-material/dist/components/MdChips";
+import { mapActions } from "vuex";
 
-Vue.use(MdButton)
-Vue.use(MdField)
-Vue.use(MdInput)
+Vue.use(MdButton);
+Vue.use(MdField);
+Vue.use(MdInput);
 
 export default {
-  name: 'CategoriesAppend',
-  props: {
-  },
+  name: "CategoriesAppend",
+  props: {},
   data() {
-    return{
-        style: '',
-        division: '',
-        errors: []
-    }
+    return {
+      style: "",
+      division: "",
+      errors: []
+    };
   },
   methods: {
-    ...mapActions(['addCategory']),
+    ...mapActions(["addCategory"]),
     append() {
-        if ( this.valid() !== true ) { return false; }
-        this.addCategory({
-            style: this.style,
-            division: this.division
-        });
-        this.style = '';
-        this.division = '';
-    },      
+      if (this.valid() !== true) {
+        return false;
+      }
+      this.addCategory({
+        style: this.style,
+        division: this.division
+      });
+      this.style = "";
+      this.division = "";
+    },
     valid() {
       this.errors = [];
-      if ( !this.style ) {
-        this.errors.push('Style can\'t be empty');
+      if (!this.style) {
+        this.errors.push("Style can't be empty");
       }
-      if ( !this.division ) {
-        this.errors.push('Division can\'t be empty');
+      if (!this.division) {
+        this.errors.push("Division can't be empty");
       }
       return this.errors.length === 0;
     }
@@ -72,15 +73,14 @@ export default {
       return this.valid() !== true;
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 .md-layout-item {
-    text-align: left;
-    vertical-align: middle;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .md-content {

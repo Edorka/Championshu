@@ -6,19 +6,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import CategoriesList from '@/components/categories-list.vue'
-import CategoriesAppend from '@/components/categories-append.vue'
-
+import { mapState } from "vuex";
+import CategoriesList from "@/components/categories-list.vue";
+import CategoriesAppend from "@/components/categories-append.vue";
 
 export default {
-  name: 'Categories',
+  name: "Categories",
   components: {
     CategoriesList,
     CategoriesAppend
   },
-  computed: mapState(['encounter', 'categories']),
-}
+  computed: mapState(["encounter", "categories"])
+};
 </script>
 
 <style>
@@ -26,6 +25,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  padding: .5em 2.5em;
+  padding: 0.5em 2.5em;
 }
 </style>

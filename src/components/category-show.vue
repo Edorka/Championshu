@@ -12,41 +12,41 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { mapGetters } from 'vuex'
+import Vue from "vue";
+import { mapGetters } from "vuex";
 
-import { MdButton, MdIcon } from 'vue-material/dist/components'
-import CategoryCompetitorAppend from '@/components/category-competitor-append.vue'
-import CategoryCompetitorRow from '@/components/category-competitor-row.vue'
+import { MdButton, MdIcon } from "vue-material/dist/components";
+import CategoryCompetitorAppend from "@/components/category-competitor-append.vue";
+import CategoryCompetitorRow from "@/components/category-competitor-row.vue";
 Vue.use(MdButton);
 Vue.use(MdIcon);
 
 export default {
-  name: 'CategoryShow',
+  name: "CategoryShow",
   components: { CategoryCompetitorAppend, CategoryCompetitorRow },
-  props: {
-  },
+  props: {},
   data() {
-      return {}
+    return {};
   },
   computed: {
-    ...mapGetters(['getCategory', 'getCompetitors']),
+    ...mapGetters(["getCategory", "getCompetitors"]),
     category() {
       const categoryId = this.$route.params.id;
-      return this.getCategory(categoryId)
+      return this.getCategory(categoryId);
     },
     competitors() {
       const categoryId = this.$route.params.id;
       return this.getCompetitors(categoryId);
     }
   }
-}</script>
+};
+</script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    #competitors-list {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-align: center;
-      padding: .5em 2.5em;
-    }
+#competitors-list {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  padding: 0.5em 2.5em;
+}
 </style>

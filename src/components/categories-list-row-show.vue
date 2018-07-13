@@ -30,49 +30,49 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { mapActions, mapGetters } from 'vuex'
-import { MdButton, MdIcon } from 'vue-material/dist/components'
-import { MdContent } from 'vue-material/dist/components'
-import { MdBadge } from 'vue-material/dist/components'
+import Vue from "vue";
+import { mapActions, mapGetters } from "vuex";
+import { MdButton, MdIcon } from "vue-material/dist/components";
+import { MdContent } from "vue-material/dist/components";
+import { MdBadge } from "vue-material/dist/components";
 Vue.use(MdButton);
 Vue.use(MdIcon);
 Vue.use(MdContent);
 Vue.use(MdBadge);
 
 export default {
-  name: 'CategoriesListRowShow',
+  name: "CategoriesListRowShow",
   props: {
     target: Object
   },
   computed: {
-    ...mapGetters(['getCompetitors']),
+    ...mapGetters(["getCompetitors"]),
     inscriptions() {
-      return this.getCompetitors(this.target.id)
+      return this.getCompetitors(this.target.id);
     }
   },
   methods: {
-    ...mapActions(['removeCategory']),
+    ...mapActions(["removeCategory"]),
     edit() {
-        this.$emit('edition');
+      this.$emit("edition");
     },
     remove() {
-        this.removeCategory(this.target.id);
+      this.removeCategory(this.target.id);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    .md-layout-item {
-        text-align: left;
-        vertical-align: middle;
-    }
-    .buttons{
-        text-align: right;
-    }
-    .buttons button{
-        display: inline-block;
-    }
+.md-layout-item {
+  text-align: left;
+  vertical-align: middle;
+}
+.buttons {
+  text-align: right;
+}
+.buttons button {
+  display: inline-block;
+}
 </style>

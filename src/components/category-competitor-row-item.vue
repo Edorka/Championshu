@@ -22,41 +22,41 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { mapActions } from 'vuex'
-import { MdButton, MdIcon } from 'vue-material/dist/components'
-import { MdContent } from 'vue-material/dist/components'
+import Vue from "vue";
+import { mapActions } from "vuex";
+import { MdButton, MdIcon } from "vue-material/dist/components";
+import { MdContent } from "vue-material/dist/components";
 Vue.use(MdButton);
 Vue.use(MdIcon);
 Vue.use(MdContent);
 
 export default {
-  name: 'CategoriesListRowShow',
+  name: "CategoriesListRowShow",
   props: {
     target: Object
   },
   methods: {
-    ...mapActions(['removeCompetitor']),
+    ...mapActions(["removeCompetitor"]),
     edit() {
-        this.$emit('edition');
+      this.$emit("edition");
     },
     remove() {
-        this.removeCompetitor(this.target.id);
+      this.removeCompetitor(this.target.id);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    .md-layout-item {
-        text-align: left;
-        vertical-align: middle;
-    }
-    .buttons{
-        text-align: right;
-    }
-    .buttons button{
-        display: inline-block;
-    }
+.md-layout-item {
+  text-align: left;
+  vertical-align: middle;
+}
+.buttons {
+  text-align: right;
+}
+.buttons button {
+  display: inline-block;
+}
 </style>
