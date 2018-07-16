@@ -1,5 +1,6 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
+import Vue from 'vue'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -8,11 +9,7 @@ export default new Vuex.Store({
         "encounter": {
             "name": "First championship"
         },
-        "categories": [
-            {'id': 1,'style':'Chang Quan','division':'Sr. Male'},
-            {'id': 2,'style':'Chang Quan','division':'Sr. Female'},
-            {'id': 3,'style':'Chang Quan','division':'Jr. Mixed'},
-        ],
+        "categories": [],
         "inscriptions": []
     },
     getters: {
@@ -28,6 +25,9 @@ export default new Vuex.Store({
         }
     },
     mutations: {
+        RETRIEVE_DATA: (state, data) => {
+            Vue.set(state, 'categories', data.categories);
+        },
         ADD_CATEGORY: (state, category) => {
             category.id = state.categories.length + 1;
             category.competitors = [];
@@ -57,6 +57,12 @@ export default new Vuex.Store({
 
     },
     actions: {
+        retrieveData: (context) => {
+            const params = { 'crossdomain': true };
+            axios.get(process.env.VUE_APP_DATA_SOURCE, params)
+                .then( response => context.commit('RETRIEVE_DATA', response.data) )
+                .catch( error => console.error(error));
+        },
         addCategory: (context, category) => {
             context.commit('ADD_CATEGORY', category);
         },

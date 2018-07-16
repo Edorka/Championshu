@@ -7,6 +7,7 @@
 
 <script>
 import CategoriesListRow from "./categories-list-row.vue";
+import { mapActions } from "vuex";
 
 export default {
   name: "CategoriesList",
@@ -16,10 +17,16 @@ export default {
   props: {
     items: Array
   },
+  methods: {
+    ...mapActions(["retrieveData"]),
+  },
   data() {
     return {
       item: { name: "test" }
     };
+  },
+  created() {
+    this.retrieveData();
   }
 };
 </script>
