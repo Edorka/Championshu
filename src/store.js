@@ -4,6 +4,11 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
+const headers = new Headers({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+});
+
 export default new Vuex.Store({
     state: {
         "encounter": {
@@ -58,13 +63,18 @@ export default new Vuex.Store({
     },
     actions: {
         retrieveData: (context) => {
-            const params = { 'crossdomain': true };
-            axios.get(process.env.VUE_APP_DATA_SOURCE, params)
-                .then( response => context.commit('RETRIEVE_DATA', response.data) )
-                .catch( error => console.error(error));
+            const params = { headers };
+            fetch(process.env.VUE_APP_API_HOST + '/categories', params)
+                .catch( error => console.error(error))
+                .then( response => response.json() )
+                .then( data => context.commit('RETRIEVE_DATA', data) );
         },
         addCategory: (context, category) => {
-            context.commit('ADD_CATEGORY', category);
+            const params = { method: 'POST', headers, body: JSON.stringify(category) };
+            fetch(process.env.VUE_APP_API_HOST + '/categories', params)
+                .catch( error => console.error(error))
+                .then( response => response.ok ? response.json() : response.text() )
+                .then( data => context.commit('ADD_CATEGORY', data) );
         },
         removeCategory: (context, targetId) => {
             context.commit('REMOVE_CATEGORY', targetId);
