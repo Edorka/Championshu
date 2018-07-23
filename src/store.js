@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -31,7 +30,8 @@ export default new Vuex.Store({
     },
     mutations: {
         RETRIEVE_DATA: (state, data) => {
-            Vue.set(state, 'categories', data.categories);
+            const categories = data.categories || [];
+            Vue.set(state, 'categories', categories);
         },
         ADD_CATEGORY: (state, category) => {
             category.id = state.categories.length + 1;
@@ -39,7 +39,8 @@ export default new Vuex.Store({
             state.categories.push(category);
         },
         REMOVE_CATEGORY: (state, targetId) => {
-            state.categories = state.categories.filter( current => current.id != targetId );
+            const remaining = state.categories.filter( current => current.id != targetId );
+            Vue.set(state, 'categories', remaining);
         },
         UPDATE_CATEGORY: (state, updated) => {
             const index = state.categories.findIndex((current) => current.id === updated.id);
@@ -64,23 +65,37 @@ export default new Vuex.Store({
     actions: {
         retrieveData: (context) => {
             const params = { headers };
-            fetch(process.env.VUE_APP_API_HOST + '/categories', params)
+            fetch(process.env.VUE_APP_API_HOST + '/api/categories', params)
                 .catch( error => console.error(error))
                 .then( response => response.json() )
                 .then( data => context.commit('RETRIEVE_DATA', data) );
         },
         addCategory: (context, category) => {
             const params = { method: 'POST', headers, body: JSON.stringify(category) };
-            fetch(process.env.VUE_APP_API_HOST + '/categories', params)
+            fetch(process.env.VUE_APP_API_HOST + '/api/categories', params)
                 .catch( error => console.error(error))
                 .then( response => response.ok ? response.json() : response.text() )
                 .then( data => context.commit('ADD_CATEGORY', data) );
         },
         removeCategory: (context, targetId) => {
-            context.commit('REMOVE_CATEGORY', targetId);
+            const host = process.env.VUE_APP_API_HOST;
+            const params = { method: 'DELETE', headers };
+            const resource = `${host}/api/categories/${targetId}`;
+            console.log('resource', resource);
+            fetch(resource, params)
+                .catch( error => console.error(error))
+                .then( () => context.commit('REMOVE_CATEGORY', targetId) );
         },
-        updateCategory: (context, updated) => {
-            context.commit('UPDATE_CATEGORY', updated);
+        updateCategory: (context, update) => {
+            const host = process.env.VUE_APP_API_HOST;
+            const body = JSON.stringify(update)
+            const params = { method: 'PUT', headers, body };
+            const resource = `${host}/api/categories/${update.id}`;
+            fetch(resource, params)
+                .catch( error => console.error(error))
+                .then( response => response.ok ? response.json() : response.text() )
+                .then( data => context.commit('UPDATE_CATEGORY', data) )
+            ;
         },
         addCategoryCompetitor: (context, competitor) => {
             const categoryId = competitor.categoryId;

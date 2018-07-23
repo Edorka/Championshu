@@ -1,55 +1,38 @@
 package main
 
 import (
-    "encoding/json"
-    "log"
-    "net/http"
-    "github.com/gorilla/handlers"
-    "github.com/gorilla/mux"
+	"championshu/categories"
+	"database/sql"
+	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
+	_ "github.com/mattn/go-sqlite3"
+	"log"
+	"net/http"
 )
-
-
-type Category struct {
-    ID        int      `json:"id"`
-    Style     string   `json:"style,omitempty"`
-    Division  string   `json:"division,omitempty"`
-}
-
-type Categories struct {
-    Items  []Category   `json:"categories,omitempty"`
-}
-var categories []Category;
-
-func GetCategories(w http.ResponseWriter, r *http.Request) {
-    var result Categories = Categories{Items: categories}
-    json.NewEncoder(w).Encode(result); 
-}
-
-func GetCategory(w http.ResponseWriter, r *http.Request) {}
-
-func CreateCategory(w http.ResponseWriter, r *http.Request) {
-    var category Category
-    _ = json.NewDecoder(r.Body).Decode(&category)
-    categories = append(categories, category)
-    json.NewEncoder(w).Encode(category)
-}
-
-func DeleteCategory(w http.ResponseWriter, r *http.Request) {}
 
 // our main function
 func main() {
-    categories = append(categories, Category{ID: 1, Style: "Chang Quan", Division: "Male"})
-    categories = append(categories, Category{ID: 2, Style: "Chang Quan", Division: "Female"})
-    categories = append(categories, Category{ID: 3, Style: "Chang Quan", Division: "Jr Mixed"})
+	db, err := sql.Open("sqlite3", "file:championshu.db?_loc=auto")
+	if err != nil {
+		panic(err)
+	}
+	app := categories.CategoriesApp{}
+	app.Source(db)
+	app.Init()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    allowedHeaders := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
-    allowedOrigins := handlers.AllowedOrigins([]string{"*"})
-    allowedMethods := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"})
+	allowedHeaders := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
+	allowedOrigins := handlers.AllowedOrigins([]string{"*"})
+	allowedMethods := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"})
 
-    router := mux.NewRouter()
-    router.HandleFunc("/categories", GetCategories).Methods("GET")
-    router.HandleFunc("/categories", CreateCategory).Methods("POST")
-    router.HandleFunc("/categories/{id}", GetCategory).Methods("GET")
-    router.HandleFunc("/categories/{id}", DeleteCategory).Methods("DELETE")
-    log.Fatal(http.ListenAndServe(":8000",handlers.CORS(allowedHeaders, allowedOrigins, allowedMethods)(router)))
+	router := mux.NewRouter()
+	router.HandleFunc("/api/categories", app.List).Methods("GET")
+	router.HandleFunc("/api/categories/{id}", app.Get).Methods("GET")
+	router.HandleFunc("/api/categories", app.Create).Methods("POST")
+	router.HandleFunc("/api/categories/{id}", app.Update).Methods("PUT")
+	router.HandleFunc("/api/categories/{id}", app.Delete).Methods("DELETE")
+
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(allowedHeaders, allowedOrigins, allowedMethods)(router)))
 }

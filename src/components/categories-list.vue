@@ -22,7 +22,6 @@ export default {
   },
   data() {
     return {
-      item: { name: "test" }
     };
   },
   created() {
