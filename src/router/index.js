@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Categories from '@/components/categories'
-import CategoryShow from '@/components/category-show'
+import Categories from '@/features/categories'
+import CategoryShow from '@/features/category-show'
 
 Vue.use(Router)
 

@@ -7,8 +7,8 @@
 
 <script>
 import { mapState } from "vuex";
-import CategoriesList from "@/components/categories-list.vue";
-import CategoriesAppend from "@/components/categories-append.vue";
+import CategoriesList from "./components/list.vue";
+import CategoriesAppend from "./components/append.vue";
 
 export default {
   name: "Categories",

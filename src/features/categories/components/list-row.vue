@@ -5,8 +5,8 @@
     </md-content>
 </template>
 <script>
-import CategoriesListRowEdit from "./categories-list-row-edit.vue";
-import CategoriesListRowShow from "./categories-list-row-show.vue";
+import CategoriesListRowEdit from "./list-row-edit.vue";
+import CategoriesListRowShow from "./list-row-show.vue";
 
 export default {
   name: "CategoriesListRow",
