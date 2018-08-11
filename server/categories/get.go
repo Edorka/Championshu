@@ -19,5 +19,9 @@ func (app *CategoriesApp) Get(response http.ResponseWriter, request *http.Reques
 	const query = `SELECT id, style, division from categories where id = $1 `
 	var result Category = Category{}
 	err = app.Access.QueryRow(query, expectedId).Scan(&result.ID, &result.Style, &result.Division)
+        if err != nil {
+		http.Error(response, fmt.Sprintf("Cannot retrieve information: ", err), 500)
+		return
+	}
 	json.NewEncoder(response).Encode(result)
 }

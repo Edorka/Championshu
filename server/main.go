@@ -1,13 +1,13 @@
 package main
 
 import (
-	"championshu/categories"
 	"database/sql"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
 	"net/http"
+	"github.com/Edorka/championshu/server/categories"
 )
 
 // our main function

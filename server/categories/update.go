@@ -11,7 +11,7 @@ import (
 func (app *CategoriesApp) Update(response http.ResponseWriter, request *http.Request) {
 	response.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(request)
-	expectedId, err := strconv.ParseInt(params["id"], 10, 32)
+	targetId, err := strconv.ParseInt(params["id"], 10, 32)
 	if err != nil {
 		http.Error(response, fmt.Sprintf("malformed id: %v", params["id"]), 400)
 		return
@@ -23,7 +23,7 @@ func (app *CategoriesApp) Update(response http.ResponseWriter, request *http.Req
 	}
 	var target Category
 	_ = json.NewDecoder(request.Body).Decode(&target)
-	update.Exec(&target.Style, &target.Division, expectedId)
+	update.Exec(&target.Style, &target.Division, targetId)
 	response.WriteHeader(http.StatusOK)
 	json.NewEncoder(response).Encode(target)
 }

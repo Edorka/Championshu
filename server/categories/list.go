@@ -24,5 +24,3 @@ func (app *CategoriesApp) List(response http.ResponseWriter, request *http.Reque
 	result := Categories{Items: categories}
 	json.NewEncoder(response).Encode(result)
 }
-
-
